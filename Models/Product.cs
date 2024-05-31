@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AgriEnergyConnect.Models;
 
+// EF auto generated
 public partial class Product
 {
-    [Key]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Please enter a Name for your Product")]
@@ -24,10 +24,10 @@ public partial class Product
 
     public DateTime? DateCreated { get; set; }
 
+    [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
+    public decimal? Price { get; set; }
+
     public virtual Category? Category { get; set; }
 
     public virtual User? Seller { get; set; }
-
-    [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
-    public decimal Price { get; set; }
 }

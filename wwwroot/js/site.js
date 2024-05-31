@@ -21,7 +21,6 @@ function previewImage(event)
 // Popup show logic
 function togglePopup(event)
 {
-    console.log("run");
     const element = document.querySelector(".js-popup-background");
     if (element.classList.contains("collapse")) {
         // Toggle visible

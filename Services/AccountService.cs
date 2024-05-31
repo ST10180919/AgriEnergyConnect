@@ -90,14 +90,54 @@ namespace ModulePlanner.Services
             return this.UserLoggedIn.Products.Any();
         }
 
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Gets all categories from the database
+        /// </summary>
+        /// <returns></returns>
         public List<Category> GetCategories()
         {
             return this._userDataService.GetCategories();
         }
 
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Removes a product from the database
+        /// </summary>
+        /// <param name="product"></param>
         public void RemoveProduct(Product product)
         {
             this._userDataService.RemoveProduct(product);
+        }
+
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Gets all roles in the database
+        /// </summary>
+        /// <returns></returns>
+        public List<Role> GetRoles()
+        {
+            return this._userDataService.GetRoles();
+        }
+
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Add a user without logging them in
+        /// </summary>
+        /// <param name="user"></param>
+        public void AddUserWithoutLoggingIn(User user)
+        {
+            this._userDataService.AddUser(user);
+        }
+
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Gets all products in the database
+        /// </summary>
+        /// <returns></returns>
+        public List<Product> GetAllProducts()
+        {
+            return this._userDataService.GetAllProducts();
         }
     }
 }

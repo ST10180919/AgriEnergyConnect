@@ -61,7 +61,33 @@ namespace ModulePlanner.Services
         /// </summary>
         void SaveUserData();
 
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Removes a given product
+        /// </summary>
+        /// <param name="product"></param>
         void RemoveProduct(Product product);
+
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Gets the roles in the DB
+        /// </summary>
+        /// <returns></returns>
+        List<Role> GetRoles();
+
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Adds a user without logging them in
+        /// </summary>
+        /// <param name="user"></param>
+        void AddUserWithoutLoggingIn(User user);
+
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Gets all products regardless of Seller
+        /// </summary>
+        /// <returns></returns>
+        List<Product> GetAllProducts();
     }
 }
 //---------------------------------------EOF-------------------------------------------

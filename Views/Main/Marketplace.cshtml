@@ -10,29 +10,34 @@
 </div>
 
 @if(Model.Products != null && Model.Products.Count > 0) {
-    <div class="marketplace-grid">
-        @foreach (var product in Model.Products)
-        {
-            // Convert byte array to Base64 string
-            var imageBase64 = Convert.ToBase64String(product.Image);
-            var imageUrl = $"data:image/png;base64,{imageBase64}";
+    <div style="display: flex; justify-content: center;">
+        <div class="marketplace-grid">
+            @foreach (var product in Model.Products)
+            {
+                // Convert byte array to Base64 string
+                var imageBase64 = Convert.ToBase64String(product.Image);
+                var imageUrl = $"data:image/png;base64,{imageBase64}";
 
-            <div class="product-card">
-                <img class="card-image" src="@imageUrl" />
-                <h3 class="card-product-name">@product.ProductName</h3>
-                <div class="production-date-row">
-                    <div class="card-production-date"> Prod. date</div>
-                    <div style="font-weight: 600;" class="card-production-date">@product.ProductionDate?.ToShortDateString()</div>
+                <div style="display: flex; justify-content: center;">
+                    <div class="product-card">
+                        <img class="card-image" src="@imageUrl" />
+                        <h3 class="card-product-name">@product.ProductName</h3>
+                        <div class="production-date-row">
+                            <div class="card-production-date"> Prod. date</div>
+                            <div style="font-weight: 600;" class="card-production-date">@product.ProductionDate?.ToShortDateString()</div>
+                        </div>
+                        <div class="card-price">R @product.Price</div>
+                        <div class="card-seller">
+                            <span class="card-seller-text">Seller</span>
+                            @product.Seller.Email
+                        </div>
+                        <div class="card-category">@product.Category.CategoryName</div>
+                        <img class="add-to-cart-button" src="~/images/plus.png" />
+                    </div>
                 </div>
-                <div class="card-price">R @product.Price</div>
-                <div class="card-seller">
-                    <span class="card-seller-text">Seller</span>
-                    @product.Seller.Email
-                </div>
-                <div class="card-category">@product.Category.CategoryName</div>
-                <img class="add-to-cart-button" src="~/images/plus.png" />
-            </div>
-        }
+
+            }
+        </div>
     </div>
 }
 

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace AgriEnergyConnect.Models;
 
+// EF auto generated
 public partial class Category
 {
-    [Key]
     public int Id { get; set; }
 
     public string? CategoryName { get; set; }

@@ -20,6 +20,8 @@ namespace AgriEnergyConnect.ViewModels
         [Required]
         public string Password { get; set; } = string.Empty;
 
+        public int RoleId { get; set; } = 1;
+
         //-----------------------------------------------------------------------------
         /// <summary>
         /// Confirm password entered by the user

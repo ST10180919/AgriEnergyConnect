@@ -5,21 +5,25 @@
 .product-name-price-grid {
     display: grid;
     grid-template-columns: 5fr 2fr;
-    width: clamp(300px, 50vw, 470px);
+    width: clamp(300px, 100%, 100vw);
     column-gap: 10px;
+    text-align: left;
 }
 
 .category-production-date-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: clamp(300px, 50vw, 470px);
+    width: clamp(300px, 100%, 100vw);
     column-gap: 10px;
+    text-align: left;
 }
 
 .choose-image-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
+    width: clamp(300px, 100%, 100vw);
 }
 
 .image-input {
@@ -57,4 +61,15 @@
     width: 80%;
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: 550px) {
+    .category-production-date-grid {
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: auto auto;
+        width: clamp(300px, 100%, 100vw);
+        row-gap: 20px;
+        text-align: left;
+    }
 }

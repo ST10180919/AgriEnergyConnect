@@ -39,6 +39,7 @@ namespace ModulePlanner.Services
             {
                 using (this.DbContext = new ApplicationDBContext())
                 {
+                    this.DbContext.Roles.Update(user.Role);
                     this.DbContext.Users.Add(user);
                     this.DbContext.SaveChanges();
                 }
@@ -54,16 +55,16 @@ namespace ModulePlanner.Services
         /// Gets a user with the matching username. Returns a new User if no matching 
         /// username exists
         /// </summary>
-        /// <param name="username"></param>
+        /// <param name="email"></param>
         /// <returns></returns>
-        public User GetUserWithUsername(string username)
+        public User GetUserWithUsername(string email)
         {
             try
             {
                 using (this.DbContext = new ApplicationDBContext())
                 {
-                    var user = this.DbContext.Users.Include(user => user.Products).
-                        ThenInclude(product => product.Category).Include(user => user.Roles);
+                    var user = this.DbContext.Users.Where(user => user.Email == email).Include(user => user.Products).
+                        ThenInclude(product => product.Category).Include(user => user.Role).FirstOrDefault();
                     return user;
                 }
             }
@@ -151,6 +152,11 @@ namespace ModulePlanner.Services
             }
         }
 
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Get Categories from db
+        /// </summary>
+        /// <returns></returns>
         public List<Category> GetCategories()
         {
             try
@@ -168,6 +174,11 @@ namespace ModulePlanner.Services
             }
         }
 
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Remove product from db
+        /// </summary>
+        /// <param name="product"></param>
         public void RemoveProduct(Product product)
         {
             try
@@ -181,6 +192,48 @@ namespace ModulePlanner.Services
             catch (Exception ex)
             {
                 this._logger.LogError(ex.ToString());
+            }
+        }
+
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Gets roles from db
+        /// </summary>
+        /// <returns></returns>
+        public List<Role> GetRoles()
+        {
+            try
+            {
+                using (this.DbContext = new ApplicationDBContext())
+                {
+                    return this.DbContext.Roles.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex.ToString());
+                return null;
+            }
+        }
+
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Gets all products from db
+        /// </summary>
+        /// <returns></returns>
+        public List<Product> GetAllProducts()
+        {
+            try
+            {
+                using (this.DbContext = new ApplicationDBContext())
+                {
+                    return this.DbContext.Products.Include(p => p.Seller).Include(p => p.Category).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex.ToString());
+                return null;
             }
         }
     }

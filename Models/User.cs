@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace AgriEnergyConnect.Models;
 
+// EF auto generated
 public partial class User
 {
-    [Key]
     public int Id { get; set; }
 
     public string? Email { get; set; }
@@ -15,9 +14,9 @@ public partial class User
 
     public DateTime? DateCreated { get; set; }
 
-    public int? RoleId { get; set; }
+    public int? Roleid { get; set; }
 
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 
-    public virtual ICollection<Role> Roles { get; set; } = new List<Role>();
+    public virtual Role Role { get; set; }
 }

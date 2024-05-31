@@ -5,65 +5,55 @@ namespace AgriEnergyConnect.ViewModels
 {
     //---------------------------------------------------------------------------------
     /// <summary>
-    /// View Model for the marketplace
+    /// ViewModel for the dashboard view
     /// </summary>
-    public class MarketplaceViewModel
+    public class DashboardViewModel
     {
         //-----------------------------------------------------------------------------
         /// <summary>
-        /// Products being shown on the marketplace
+        /// Products for the user
         /// </summary>
         public List<Product> Products { get; set; }
 
         //-----------------------------------------------------------------------------
         /// <summary>
-        /// Categories for the project to filter
+        /// User's role
         /// </summary>
-        public List<Category> Categories { get; set; }
-
-        //-----------------------------------------------------------------------------
-        /// <summary>
-        /// Field for the user to filter by Seller
-        /// </summary>
-        public string FilterSeller { get; set; }
-
-        //-----------------------------------------------------------------------------
-        /// <summary>
-        /// Field for the user to filter by category
-        /// </summary>
-        public int FilterCategory { get; set; }
-
-        //-----------------------------------------------------------------------------
-        /// <summary>
-        /// Start date filter
-        /// </summary>
-        public DateOnly FilterStartDate { get; set; }
-
-        //-----------------------------------------------------------------------------
-        /// <summary>
-        /// End date filter
-        /// </summary>
-        public DateOnly FilterEndDate { get; set; }
+        public string UserRole { get; set; }
 
         //-----------------------------------------------------------------------------
         /// <summary>
         /// Ctor
         /// </summary>
-        public MarketplaceViewModel()
+        public DashboardViewModel()
         {
             
         }
 
         //-----------------------------------------------------------------------------
         /// <summary>
-        /// Constructor with products and categories
+        /// Farmer email field
+        /// </summary>
+        [Required]
+        public string FarmerEmail { get; set; }
+
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Farmer password field
+        /// </summary>
+        [Required]
+        public string FarmerPassword { get; set; }
+
+        //-----------------------------------------------------------------------------
+        /// <summary>
+        /// Constructor passing products and user role
         /// </summary>
         /// <param name="products"></param>
-        /// <param name="categories"></param>
-        public MarketplaceViewModel(List<Product> products, List<Category> categories)
+        /// <param name="userRole"></param>
+        public DashboardViewModel(List<Product> products, string userRole)
         {
             this.Products = products;
-            this.Categories = categories;   
+            this.UserRole = userRole;
         }
     }
 }

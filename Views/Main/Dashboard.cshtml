@@ -1,51 +1,88 @@
-﻿@model List<Product>
+﻿@using AgriEnergyConnect.ViewModels;
+@model DashboardViewModel
 @{
     Layout = "_Layout";
 }
 
-<div class="page-content-container">
-    <h2>Listed Products</h2>
+<!--  Shown to farmers  -->
+@if (Model.UserRole.Equals("Farmer"))
+{
+    <div class="page-content-container">
+        <h2>Listed Products</h2>
 
-    @if (Model != null && Model.Count > 0)
-    {
-        <div class="products-grid">
-            <h3 class="header-item">Product Name</h3>
-            <h3 class="header-item">Category</h3>
-            <h3 class="header-item">Price</h3>
-            <h3 class="header-item">Production Date</h3>
-            <h3 class="header-item">Remove</h3>
-        </div>
+        @if (Model.Products != null && Model.Products.Count > 0)
+        {
+            <div class="products-grid">
+                <h3 class="header-item">Product Name</h3>
+                <h3 class="header-item">Category</h3>
+                <h3 class="header-item">Price</h3>
+                <h3 class="header-item">Production Date</h3>
+                <h3 class="header-item">Remove</h3>
+            </div>
 
-        <div class="listed-products" style="width: 100%;">
-            <ul style="width: 100%; padding: 0;">
-                @foreach (var product in Model)
+            <div class="listed-products" style="width: 100%;">
+                <ul style="width: 100%; padding: 0;">
+                    @foreach (var product in Model.Products)
+                    {
+                        <li class="product-item">
+                            <p>@product.ProductName</p>
+                            <p>@product.Category.CategoryName</p>
+                            <p>R @product.Price</p>
+                            <p>@product.ProductionDate?.ToShortDateString()</p>
+                            <form method="post" action="/Main/RemoveProduct">
+                                <input type="hidden" name="productId" value="@product.Id" />
+                                <button type="submit" class="remove-item-button">X</button>
+                            </form>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+        else
+        {
+            <!--  Display No Product Message  -->
+            <br />
+            <p class="empty-products-message">
+                Oops! Looks like you don't have any listed products yet.
+            </p>
+            <p class="empty-products-message">
+                You can list them below.
+            </p>
+        }
+
+        <a style="margin-top: 50px" class="small-green-button" asp-controller="Main" asp-action="AddProducts">Add Product</a>
+
+    </div>
+}
+else
+{
+    <!--  For Employees  -->
+    <form method="post" action="/Main/AddFarmer">
+        <div class="page-content-container">
+            <h2 style="margin-bottom: 40px; text-align: center !important;">Add Farmer</h2>
+
+            <div class="farmer-email-row" style="margin-bottom: 25px;">
+                <h3>Farmer Email</h3>
+                <input asp-for="FarmerEmail" />
+                <span asp-validation-for="FarmerEmail" class="validation-message"></span>
+            </div>
+
+            <div class="farmer-password-row" style="margin-bottom: 60px;">
+                <h3>Farmer Password</h3>
+                <input type="password" asp-for="FarmerPassword"/>
+                <span asp-validation-for="FarmerPassword" class="validation-message"></span>
+            </div>
+
+            <button type="submit" class="small-green-button" onclick="alertFarmerAdded()">Add Farmer</button>
+            <script>
+                function alertFarmerAdded()
                 {
-                    <li class="product-item">
-                        <p>@product.ProductName</p>
-                        <p>@product.Category.CategoryName</p>
-                        <p>R @product.Price</p>
-                        <p>@product.ProductionDate?.ToShortDateString()</p>
-                        <form method="post" action="/Main/RemoveProduct">
-                            <input type="hidden" name="productId" value="@product.Id" />
-                            <button type="submit" class="remove-item-button">X</button>
-                        </form>
-                    </li>
+                    // Got mad at me when I put this directly in the onclick
+                    alert("Farmer has been Added");
                 }
-            </ul>
+            </script>
+
         </div>
-    }
-    else
-    {
-        <!--  Display No Product Message  -->
-        <br />
-        <p class="empty-products-message">
-            Oops! Looks like you don't have any listed products yet.
-        </p>
-        <p class="empty-products-message">
-            You can list them below.
-        </p>
-    }
+    </form>
+}
 
-    <a style="margin-top: 50px" class="small-green-button" asp-controller="Main" asp-action="AddProducts">Add Product</a>
-
-</div>

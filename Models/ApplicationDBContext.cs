@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AgriEnergyConnect.Models;
 
-public partial class ApplicationDBContext : DbContext   
+public partial class ApplicationDBContext : DbContext
 {
     public ApplicationDBContext()
     {
@@ -25,7 +25,7 @@ public partial class ApplicationDBContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=agri-energy-connect-server-st10180919.database.windows.net;Database=agri-energy-connect-db-st10180919;User Id=Az123ure;Password=Azure123;");
+        => optionsBuilder.UseSqlServer("Server=tcp:agri-energy-connect-server-st10180919.database.windows.net,1433;Initial Catalog=agri-energy-connect-db-st10180919;Persist Security Info=False;User ID=Az123ure;Password=Azure123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -59,6 +59,9 @@ public partial class ApplicationDBContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("DATE_CREATED");
             entity.Property(e => e.Image).HasColumnName("IMAGE");
+            entity.Property(e => e.Price)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("PRICE");
             entity.Property(e => e.ProductName)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -113,7 +116,11 @@ public partial class ApplicationDBContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("PASSWORD");
-            entity.Property(e => e.RoleId).HasColumnName("ROLEID");
+            entity.Property(e => e.Roleid).HasColumnName("ROLEID");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.Users)
+                .HasForeignKey(d => d.Roleid)
+                .HasConstraintName("FK_USER_ROLE");
         });
 
         OnModelCreatingPartial(modelBuilder);

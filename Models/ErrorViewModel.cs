@@ -1,4 +1,4 @@
-namespace AgriEnergyConnect.Models
+﻿namespace AgriEnergyConnect.Models
 {
     public class ErrorViewModel
     {

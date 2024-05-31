@@ -9,21 +9,21 @@
     <h1 style="margin-top: -10px;"> Register </h1>
 
     <!--  Email Input  -->
-    <div>
+    <div style="width: 100%;">
         <h2> Email </h2>
-        <input asp-for="Email" />
+        <input asp-for="Email"/>
         <span asp-validation-for="Email" class="validation-message"></span>
     </div>
 
     <!--  Password Input  -->
-    <div style="margin-top: 28px">
+    <div style="margin-top: 28px; width: 100%;">
         <h2> Password </h2>
         <input asp-for="Password" type="password"/>
         <span asp-validation-for="Password" class="validation-message"></span>
     </div>
 
     <!--  Confirm Password Input  -->
-    <div style="margin-top: 28px">
+    <div style="margin-top: 28px; width: 100%;">
         <h2> Confirm Password </h2>
         <input asp-for="ConfirmPassword" type="password"/>
         <span asp-validation-for="ConfirmPassword" class="validation-message"></span>
@@ -34,7 +34,21 @@
         <a asp-controller="Account" asp-action="Login" class="highlight-gradient">Login</a>
     </p>
 
-    <button type="submit" class="green-button">Register</button>
+    <button style="margin-top: 20px;" type="submit" class="green-button">Register</button>
 
-    <p class="employee-register">or Register as an employee</p>
+    <p class="employee-register" onclick="promptEmployeeNumber()">or Register as an employee</p>
+    <input type="hidden" id="RoleId" asp-for="RoleId" />
+    <script>
+        // Register as employee prompt
+        function promptEmployeeNumber() {
+            var employeeId = prompt("Please enter your employee identification number");
+            if (employeeId !== null) {
+                // Set the RoleID value to 2 (To indicate an employee)
+                document.getElementById("RoleId").value = 2;
+                // Then submit the form
+                document.querySelector("form").submit();
+            }
+        }
+    </script>
 </form>
+

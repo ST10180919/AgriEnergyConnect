@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AgriEnergyConnect.Models;
 
+// EF auto generated
 public partial class Role
 {
     [Key]
@@ -13,5 +14,5 @@ public partial class Role
 
     public DateTime? DateCreated { get; set; }
 
-    public virtual User? Users { get; set; }
+    public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

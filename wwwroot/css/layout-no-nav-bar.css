@@ -6,7 +6,6 @@
 
 body {
     background: var(--white-background);
-    padding: 0 clamp(20px, 4vw, 50px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -15,6 +14,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: clamp(350px, 100vw, 600px);
+    padding: 30px;
 }
 
 .logo-image
@@ -30,6 +31,11 @@ body {
     font-family: "Be Vietnam Pro", sans-serif;
     font-weight: 400;
     font-size: 20px;
+    cursor: pointer;
+}
+
+.employee-register:hover {
+    text-decoration: underline;
 }
 
 
