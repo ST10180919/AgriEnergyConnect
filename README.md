@@ -7,7 +7,8 @@ Email: TestEmployee@gmail.com
 Passoword: test
 
 # Running the app
-Open AgriEnergyConnect.sln in visual studio and click run
+Open AgriEnergyConnect.sln in visual studio, build, and then run
+
 No database setup needed as the database is on azure
 
 
