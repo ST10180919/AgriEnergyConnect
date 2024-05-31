@@ -1,0 +1,200 @@
+﻿.marketplace-controls {
+    display: flex;
+    gap: 15px;
+    position: absolute;
+    right: 0;
+    top: 120px;
+    background-color: transparent;
+}
+
+.filter-button, .cart-button {
+    cursor: pointer;
+    padding: 4px 20px;
+    border-width: 0px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, background 0.2s;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.filter-button {
+    color: black;
+    background: var(--green);
+}
+
+    .filter-button:hover {
+        color: var(--green);
+        background: black;
+    }
+
+.cart-button {
+    color: black;
+    background: var(--white-background);
+}
+
+    .cart-button:hover {
+        color: var(--white-background);
+        background: black;
+    }
+
+.marketplace-grid {
+    margin-top: 110px;
+    width: 100vw;
+    padding: 0 45px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    column-gap: 45px
+}
+
+.product-card {
+    width: 240px;
+    height: 400px;
+    background-color: var(--white-background);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--white-background);
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    height: 185px;
+    object-fit: cover;
+    border-radius: 4px 4px 0 0;
+}
+
+.card-product-name {
+    font-size: 24px !important;
+    margin-top: 6px;
+    padding: 0 10px;
+}
+
+.card-production-date {
+    font-size: 16px;
+    opacity: 73%;
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 400;
+}
+
+.production-date-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.card-price {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 6px;
+    padding: 0 10px;
+}
+
+.card-seller {
+    font-size: 16px;
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 600;
+    padding: 0 10px;
+}
+
+.card-seller-text {
+    opacity: 73%;
+    font-weight: 400;
+}
+
+.card-category {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--green);
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 3px 15px;
+    border-radius: 0 4px 0 4px;
+}
+
+.add-to-cart-button {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--white-background);
+    transition: opacity 0.2s;
+}
+
+.add-to-cart-button:hover {
+    opacity: 90%;
+}
+
+.popup-background {
+    position: absolute;
+    background: black;
+    background: rgba(0, 0, 0, 0.69);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-title {
+    color: var(--white-background);
+    margin-bottom: 5px;
+}
+
+.popup-container {
+    width: clamp(400px, 100vw, 450px);
+    height: clamp(430px, fit-content, 100vh);
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-body {
+    width: 100%;
+    background: var(--white-background);
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.popup-input {
+    width: 100%;
+}
+
+.filter-category-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 9px;
+    margin-top: 20px;
+}
+
+.date-range-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 9px;
+    margin-top: 10px;
+}
+

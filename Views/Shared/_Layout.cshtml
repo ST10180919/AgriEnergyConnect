@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AgriEnergyConnect</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AgriEnergyConnect.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/header.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/main-layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/addProduct.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/marketplace.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navigation-bar">
+            <div>
+                <img src="~/images/Logo.png" class="logo" />
+            </div>
+            <ul class="nav-item-container">
+                <li>
+                    <a class="nav-item js-dashboard-item" asp-controller="Main" asp-action="Dashboard">Dashboard</a>
+                    <div class="nav-item-selector @(ViewData["ActivePage"] as string == "Dashboard" ? "visible" : "")"></div>
+                </li>
+                <li>
+                    <a class="nav-item" asp-controller="Main" asp-action="AddProducts">Add Products</a>
+                    <div class="nav-item-selector @(ViewData["ActivePage"] as string == "Add Products" ? "visible" : "")"></div>
+                </li>
+                <li>
+                    <a class="nav-item" asp-controller="Main" asp-action="Marketplace">Marketplace</a>
+                    <div class="nav-item-selector @(ViewData["ActivePage"] as string == "Marketplace" ? "visible" : "")"></div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main role="main" class="page-container">
+        @RenderBody()
+    </main>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

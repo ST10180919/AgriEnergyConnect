@@ -1,0 +1,35 @@
+﻿html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background: var(--white-background);
+    padding: 0 clamp(20px, 4vw, 50px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.page-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-image
+{
+    object-fit: contain;
+    width: 240px;
+    display: block;
+}
+
+.employee-register {
+    margin-top: 16px;
+    font-style: italic;
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+

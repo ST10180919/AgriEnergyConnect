@@ -1,0 +1,58 @@
+﻿@using AgriEnergyConnect.ViewModels;
+@model AddProductViewModel
+@{
+    Layout = "_Layout";
+}
+
+<form method="post" class="page-content-container" enctype="multipart/form-data">
+    <h2 style="margin-bottom: 26px"> List a Product </h2>
+
+    <!--  Product Name Input  -->
+    <div class="product-name-price-grid add-margin-20">
+        <div>
+            <h3> Product Name </h3>
+            <input style="width: 100%;" asp-for="Product.ProductName" />
+            <span asp-validation-for="Product.ProductName" class="validation-message"></span>
+        </div>
+
+        <div>
+            <h3> Price (R) </h3>
+            <input style="width: 100%;" asp-for="Product.Price" type="number"/>
+            <span asp-validation-for="Product.Price" class="validation-message"></span>
+        </div>
+    </div>
+
+    <div class="category-production-date-grid add-margin-20">
+        <!--  Product Category Input  -->
+        <div class="input-section">
+            <h3> Product Category </h3>
+            <select style="width: 100%;" asp-for="Product.CategoryId" asp-items="@(new SelectList(Model.Categories, nameof(Category.Id), nameof(Category.CategoryName)))">
+                <option value="" disabled selected hidden>Select a Category</option>
+            </select>
+            <span asp-validation-for="Product.CategoryId" class="validation-message"></span>
+        </div>
+
+        <!--  Production Date Input  -->
+        <div class="input-section">
+            <h3> Production Date </h3>
+            <input style="width: 100%" asp-for="Product.ProductionDate" type="date" />
+            <span asp-validation-for="Product.ProductionDate" class="validation-message"></span>
+        </div>
+    </div>
+
+    <div class="choose-image-container add-margin-20">
+        <h3 style="margin-top: 5px;"> Photo </h3>
+        <label for="file-upload" class="custom-file-input">
+            Choose File
+        </label>
+        <input asp-for="RawImage" id="file-upload" type="file" name="RawImage" accept="image/*" onchange="previewImage(event)" style="visibility: collapse; width: 0px;" />
+    </div>
+    <span asp-validation-for="RawImage" class="validation-message"></span>
+
+    <!--  Image Preview  -->
+    <div class="image-preview-section add-margin-20">
+        <img id="image-Preview" src="#" alt="Image Preview" style="max-width: 100%; max-height: 200px;" />
+    </div>
+
+    <button type="submit" class="small-green-button" style="margin-top: 20px;">List Product</button>
+</form>

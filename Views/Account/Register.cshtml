@@ -1,0 +1,40 @@
+﻿@using AgriEnergyConnect.ViewModels;
+@model RegisterViewModel
+@{
+    Layout = "_LayoutNoNavBar";
+}
+
+<form method="post" class="page-container">
+    <img class="logo-image" src="~/images/Logo.png" />
+    <h1 style="margin-top: -10px;"> Register </h1>
+
+    <!--  Email Input  -->
+    <div>
+        <h2> Email </h2>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email" class="validation-message"></span>
+    </div>
+
+    <!--  Password Input  -->
+    <div style="margin-top: 28px">
+        <h2> Password </h2>
+        <input asp-for="Password" type="password"/>
+        <span asp-validation-for="Password" class="validation-message"></span>
+    </div>
+
+    <!--  Confirm Password Input  -->
+    <div style="margin-top: 28px">
+        <h2> Confirm Password </h2>
+        <input asp-for="ConfirmPassword" type="password"/>
+        <span asp-validation-for="ConfirmPassword" class="validation-message"></span>
+    </div>
+
+    <p style="margin-top: 6px">
+        Already have an account ?
+        <a asp-controller="Account" asp-action="Login" class="highlight-gradient">Login</a>
+    </p>
+
+    <button type="submit" class="green-button">Register</button>
+
+    <p class="employee-register">or Register as an employee</p>
+</form>

@@ -1,0 +1,51 @@
+﻿@model List<Product>
+@{
+    Layout = "_Layout";
+}
+
+<div class="page-content-container">
+    <h2>Listed Products</h2>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <div class="products-grid">
+            <h3 class="header-item">Product Name</h3>
+            <h3 class="header-item">Category</h3>
+            <h3 class="header-item">Price</h3>
+            <h3 class="header-item">Production Date</h3>
+            <h3 class="header-item">Remove</h3>
+        </div>
+
+        <div class="listed-products" style="width: 100%;">
+            <ul style="width: 100%; padding: 0;">
+                @foreach (var product in Model)
+                {
+                    <li class="product-item">
+                        <p>@product.ProductName</p>
+                        <p>@product.Category.CategoryName</p>
+                        <p>R @product.Price</p>
+                        <p>@product.ProductionDate?.ToShortDateString()</p>
+                        <form method="post" action="/Main/RemoveProduct">
+                            <input type="hidden" name="productId" value="@product.Id" />
+                            <button type="submit" class="remove-item-button">X</button>
+                        </form>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+    else
+    {
+        <!--  Display No Product Message  -->
+        <br />
+        <p class="empty-products-message">
+            Oops! Looks like you don't have any listed products yet.
+        </p>
+        <p class="empty-products-message">
+            You can list them below.
+        </p>
+    }
+
+    <a style="margin-top: 50px" class="small-green-button" asp-controller="Main" asp-action="AddProducts">Add Product</a>
+
+</div>

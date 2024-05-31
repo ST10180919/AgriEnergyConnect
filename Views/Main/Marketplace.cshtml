@@ -1,0 +1,61 @@
+﻿@using AgriEnergyConnect.ViewModels;
+@model MarketplaceViewModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="marketplace-controls"> 
+    <button class="filter-button" onclick="togglePopup()">Filter</button>
+    <button class="cart-button">View Cart</button>
+</div>
+
+@if(Model.Products != null && Model.Products.Count > 0) {
+    <div class="marketplace-grid">
+        @foreach (var product in Model.Products)
+        {
+            // Convert byte array to Base64 string
+            var imageBase64 = Convert.ToBase64String(product.Image);
+            var imageUrl = $"data:image/png;base64,{imageBase64}";
+
+            <div class="product-card">
+                <img class="card-image" src="@imageUrl" />
+                <h3 class="card-product-name">@product.ProductName</h3>
+                <div class="production-date-row">
+                    <div class="card-production-date"> Prod. date</div>
+                    <div style="font-weight: 600;" class="card-production-date">@product.ProductionDate?.ToShortDateString()</div>
+                </div>
+                <div class="card-price">R @product.Price</div>
+                <div class="card-seller">
+                    <span class="card-seller-text">Seller</span>
+                    @product.Seller.Email
+                </div>
+                <div class="card-category">@product.Category.CategoryName</div>
+                <img class="add-to-cart-button" src="~/images/plus.png" />
+            </div>
+        }
+    </div>
+}
+
+<!--  Filter Popup  -->
+<form class="popup-background js-popup-background collapse" method="post" action="/Main/ApplyFilter" onclick="togglePopup()">
+    <div class="popup-container" onclick="stopClickPropagation(event)">
+        <h1 class="popup-title">Filter</h1>
+
+        <div class="popup-body">
+            <input asp-for="FilterSeller" placeholder="Seller" class="popup-input"/>
+            <div class="filter-category-row">
+                <p>Category</p> 
+                <select asp-for="FilterCategory" style="width: 100%;" asp-items="@(new SelectList(Model.Categories, nameof(Category.Id), nameof(Category.CategoryName)))">
+                    <option value="0" >All</option>
+                </select>
+            </div>
+            <p style="margin-top: 15px; text-align: start;">Date Range</p>
+            <div class="date-range-row">
+                <input asp-for="FilterStartDate" type="date" class="popup-input" />
+                <p style="font-size: 30px;">-</p>
+                <input asp-for="FilterEndDate" type="date" class="popup-input" />
+            </div>
+        </div>
+        <button type="submit" class="small-green-button">Apply Filter</button>
+    </div>
+</form>

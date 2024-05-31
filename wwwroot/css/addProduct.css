@@ -1,0 +1,60 @@
+﻿.add-margin-20 {
+    margin-bottom: 20px;
+}
+
+.product-name-price-grid {
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    width: clamp(300px, 50vw, 470px);
+    column-gap: 10px;
+}
+
+.category-production-date-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: clamp(300px, 50vw, 470px);
+    column-gap: 10px;
+}
+
+.choose-image-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.image-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-file-input {
+    color: black; /* Text color */
+    background-color: var(--white-background); /* Button background color */
+    border: solid;
+    border-width: 2px;
+    padding: 5px 10px; /* Adjust padding */
+    cursor: pointer; /* Show pointer cursor */
+    border-radius: 7px; /* Add border radius */
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+    .custom-file-input:hover {
+        background-color: black;
+        color: var(--white-background);
+    }
+
+    /* Hide default file input */
+    .custom-file-input[type="file"] {
+        display: none;
+    }
+
+.image-preview-section {
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}

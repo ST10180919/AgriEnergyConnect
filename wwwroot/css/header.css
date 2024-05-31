@@ -1,0 +1,47 @@
+﻿.navigation-bar {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    padding: 0px 20px;
+    background-color: var(--white-background);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    object-fit: contain;
+    height: 110px;
+}
+
+.nav-item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+    margin: 5px 0 0 50px;
+    padding: 0px;
+}
+
+.nav-item {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.1em; /*  10% of whatever the fontsize is  */
+    margin: 0px;
+    font-size: 30px;
+    margin-bottom: 3px;
+    color: black;
+    text-decoration: none;
+}
+
+.nav-item-selector {
+    background-color: var(--green);
+    height: 5px;
+    margin-top: -6px;
+    visibility: collapse;
+}
+
+.visible {
+    visibility: visible !important;
+}
+
