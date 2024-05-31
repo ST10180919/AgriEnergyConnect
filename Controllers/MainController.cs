@@ -106,6 +106,8 @@ namespace AgriEnergyConnect.Controllers
                 // Saving Changes
                 this._accountService.UserLoggedIn.Products.Add(model.Product);
                 this._accountService.SaveUserData();
+                
+                return RedirectToAction("Dashboard");
             }
 
             // Initializing model

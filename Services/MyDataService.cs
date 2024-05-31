@@ -109,7 +109,6 @@ namespace ModulePlanner.Services
             {
                 using (this.DbContext = new ApplicationDBContext())
                 {
-                    // Somehow this one line does all the things. I don't know how, but it works.
                     DbContext.Users.Update(user);
                     this.DbContext.SaveChanges();
                 }
